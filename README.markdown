@@ -32,6 +32,19 @@ In your views, use the helper to generate DIV tag with the map:
 
 Read the source to learn the usage of other methods (currently: map, addMarkers and addDraggableMarker). I'll add other methods when I need them or when you send them to me (Fork the repo, make your changes and send me the Pull Request).
 
+## Note
+
+If you're using the default CakePHP stylesheet (cake.generic.css) add this to the CSS:
+
+    ...
+    /* Fix for CakePHP default stylesheet */
+    .GoogleMap div {
+       clear: none;
+       margin-bottom: 0;
+       padding: 0;
+    }
+    ...
+
 ## Licence
 
 Released under The MIT License

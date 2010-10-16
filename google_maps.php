@@ -64,7 +64,8 @@ class GoogleMapsHelper extends AppHelper {
 
 		// Default htmlAttributes
 		$htmlAttributes = array_merge(array(
-			'style' => 'height: 400px'
+			'style' => 'height: 400px',
+			'class' => 'GoogleMap'
 		), $htmlAttributes);
 
 		$options = $this->__transformBooleans($options);
