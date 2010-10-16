@@ -213,16 +213,21 @@ lat = document.getElementById('{$latField}').value;
 lng = document.getElementById('{$lngField}').value;
 markerOpt = {};
 markerOpt.position = new google.maps.LatLng(lat, lng);
-if (isNaN(markerOpt.position.lat()) || isNaN(markerOpt.position.lng())) {
-	markerOpt.position = new google.maps.LatLng(44.788414, 20.469589);
-}
 markerOpt.map = {$mapCanvasId};
 markerOpt.draggable = true;
 markerOpt.cursor = 'move';
 ";
-foreach ($markerOptions as $k => $v) {
-	$script .= "markerOpt.{$k} = $v;\n";
+		foreach ($markerOptions as $k => $v) {
+			$script .= "markerOpt.{$k} = $v;\n";
+		}
+
+		$script .= "
+if (isNaN(markerOpt.position.lat()) || isNaN(markerOpt.position.lng()) || lat == '' || lng == '') {
+	markerOpt.position = new google.maps.LatLng(44.788414, 20.469589);
+	{$mapCanvasId}.setZoom(5);
 }
+";
+
 		$script .= "var marker = new google.maps.Marker(markerOpt);
 var {$mapCanvasId}Drag = function (e) {
 	lat = document.getElementById('{$latField}');
