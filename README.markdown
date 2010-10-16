@@ -30,7 +30,7 @@ In your views, use the helper to generate DIV tag with the map:
 	?>
     ...
 
-Read the source to learn the usage of other methods (currently: map, addMarkers and addDraggableMarker). I'll add other methods when I need them or when you send them to me (Fork the repo, make your changes and send me the Pull Request).
+Read the source to learn the usage of other methods (currently: map, addMarkers, addDraggableMarker and staticUrl). I'll add other methods when I need them or when you send them to me (fork the repo, make your changes and send me the Pull Request).
 
 ## Note
 

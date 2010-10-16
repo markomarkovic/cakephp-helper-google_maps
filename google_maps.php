@@ -9,7 +9,15 @@
  */
 class GoogleMapsHelper extends AppHelper {
 
+	/**
+	 * Url for Maps JS
+	 */
 	var $url = 'http://maps.google.com/maps/api/js?sensor=false';
+
+	/**
+	 * Url used for Static maps
+	 */
+	var $staticUrl = 'http://maps.google.com/maps/api/staticmap?sensor=false&';
 
 	// Other helpers used by GoogleMapsHelper
 	var $helpers = array('Html');
@@ -243,6 +251,30 @@ google.maps.event.addListener(marker, 'drag', {$mapCanvasId}Drag, true);
 {$mapCanvasId}.panTo(markerOpt.position);
 ";
 		return $this->Html->scriptBlock($script);
+	}
+
+
+	function staticUrl($lat, $lng, $zoom = 5, $size = '256x256', $maptype = 'roadmap', $markers = array()) {
+		// center=Brooklyn+Bridge,New+York,NY&zoom=14&size=512x512&maptype=roadmap&markers=color:blue|label:S|40.702147,-74.015794&markers=color:green|label:G|40.711614,-74.012318&markers=color:red|color:red|label:C|40.718217,-73.998284&sensor=false
+
+		// Validating the coordinates
+		if (!$this->__isValidLat($lat)) {
+			$lat = 44.788414;
+		}
+		if (!$this->__isValidLng($lng)) {
+			$lng = 20.469589;
+		}
+
+		$opts = '';
+		$opts .= sprintf('center=%s,%s', $lat, $lng);
+		$opts .= sprintf('&zoom=%d', $zoom);
+		$opts .= sprintf('&size=%s', $size);
+		$opts .= sprintf('&maptype=%s', $maptype);
+		foreach ($markers as $marker) {
+			$opts .= sprintf('&markers=%s', implode('|', $marker));
+		}
+
+		return $this->staticUrl . $opts;
 	}
 
 	/**
