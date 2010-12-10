@@ -5,7 +5,7 @@
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright (c) 2010 Marko Markovic <marko@ultimate.in.rs>
+ * @copyright Copyright (c) 2010 Marko Markovic <okram (at) civokram (dot) com>
  */
 class GoogleMapsHelper extends AppHelper {
 
